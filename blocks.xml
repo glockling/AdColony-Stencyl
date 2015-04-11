@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<palette>
+        <block tag="load-ad" spec="Start Ad Colony with AppID: %0 and ZoneID: %1" code="AdColony.load(~,~);" type="action" color="gray" returns="void">
+            <fields>
+                <text order="0"></text>
+                <text order="1"></text>
+            </fields>
+        </block>
+        
+        <block tag="play-ad" spec="Play Ad Colony ad with Zone ID: %0" code="AdColony.play(~);" type="action" color="gray" returns="void">
+            <fields>
+                <text order="0"></text>
+            </fields>
+        </block>
+        
+        <block tag="ad_addEventListener" spec="Add Event Listener %0 for Ad Colony" code="AdColony.addEventListener(~, function(){~});" type="wrapper" color="gray" returns="void">
+            <fields>
+                <dropdown order="0">
+                    <choices>
+                        <c text="Ad is availabe" code="&quot;available&quot;"></c>
+                        <c text="Ad is not availabe" code="&quot;notavailable&quot;"></c>
+                        <c text="Last ad played finished" code="&quot;finished&quot;"></c>
+                        <c text="Last ad played did not finish" code="&quot;notfinished&quot;"></c>
+                        </choices>
+                </dropdown>
+                <CODE_BLOCK order="1"></CODE_BLOCK>
+            </fields>
+        </block>
+        
+        <block tag="ad_removeEventListener" spec="Remove Event Listener %0 for Ad Colony" code="AdColony.removeEventListener(~);" type="action" color="gray" returns="void">
+            <fields>
+                <dropdown order="0">
+                    <choices>
+                        <c text="Ad is availabe" code="&quot;available;"></c>
+                        <c text="Ad is not availabe" code="&quot;notavailable&quot;"></c>
+                        <c text="Last ad played finished" code="&quot;finished&quot;"></c>
+                        <c text="Last ad played did not finish" code="&quot;notfinished&quot;"></c>
+                    </choices>
+                </dropdown>
+            </fields>
+        </block>
+
+</palette>

@@ -1,0 +1,6 @@
+name=Ad Colony
+description=Another ad extension
+author=Maxwell Glockling
+website=http://www.maxglockling.com
+version=1.0
+compatibility=ios
