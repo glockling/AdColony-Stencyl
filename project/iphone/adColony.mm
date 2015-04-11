@@ -65,7 +65,7 @@ extern "C" void adColonyEventChange(const char* status);
 
 // Is called when an ad for a specific Ad Zone changes availability
 
-- ( void ) onAdColonyAdAvailabilityChange:(BOOL)available inZone:(NSString*) zoneID
+- ( void )onAdColonyAdAvailabilityChange:(BOOL)available inZone:(NSString*) zoneID
 {
     if (available) {
        adColonyEventChange( "available" );
@@ -84,7 +84,7 @@ extern "C" void adColonyEventChange(const char* status);
 
 // Is called when AdColony has finished trying to show an ad, either successfully or unsuccessfully
 // If shown == YES, an ad was displayed and apps should implement app-specific code such as unpausing a game and restarting app music
-- ( void ) onAdColonyAdAttemptFinished:(BOOL)shown inZone:( NSString * )zoneID
+- ( void )onAdColonyAdAttemptFinished:(BOOL)shown inZone:( NSString * )zoneID
 {
     if (shown) {
         adColonyEventChange( "shown" );

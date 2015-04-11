@@ -14,7 +14,7 @@ class AdColony
     public static function load(appid:String, zoneid:String){
         
        
-        
+        adColonyEvent(setEventListeners);
         LoadAd(appid, zoneid);
     
     }
@@ -132,6 +132,6 @@ class AdColony
 	#if ios
 	private static var LoadAd = Lib.load("adcolony","init_adcolony", 2);
     private static var PlayAd = Lib.load("adcolony","play_adcolony", 1);
-    private static var OnFinished = Lib.load("adcolony","adcolony_event",1);
+    private static var adColonyEvent = Lib.load("adcolony","adcolony_event",1);
 	#end
 }

@@ -16,18 +16,14 @@
 
 using namespace adcolony;
 
+AutoGCRoot* adColonyEvent = 0;
+
 
 #ifdef IPHONE
 
 //--------------------------------------------------
 // Glues Haxe to native code.
 //--------------------------------------------------
-
-
-// Configure
-
-AutoGCRoot* adColonyEvent = 0;
-
 
 void adcolony_event(value onEvent)
 {
