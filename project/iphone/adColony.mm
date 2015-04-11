@@ -13,8 +13,7 @@
 #import <Foundation/Foundation.h>
 #import <AdColony/AdColony.h>
 
-extern "C" void onAdColonyAdAttemptFinished(const char* status);
-extern "C" void onAdColonyAdAvailabilityChange(const char* status);
+extern "C" void adColonyEventChange(const char* status);
 
 
 
@@ -69,8 +68,7 @@ extern "C" void onAdColonyAdAvailabilityChange(const char* status);
 - ( void ) onAdColonyAdAvailabilityChange:(BOOL)available inZone:(NSString*) zoneID
 {
     if (available) {
-       onAdColonyAdAvailabilityChange( "available" );
-        NSLog(@"Ad is available");
+       adColonyEventChange( "available" );
     }
 }
 
@@ -89,8 +87,7 @@ extern "C" void onAdColonyAdAvailabilityChange(const char* status);
 - ( void ) onAdColonyAdAttemptFinished:(BOOL)shown inZone:( NSString * )zoneID
 {
     if (shown) {
-        onAdColonyAdAttemptFinished( "shown" );
-        NSLog(@"Ad was shown");
+        adColonyEventChange( "shown" );
     }
     
 }

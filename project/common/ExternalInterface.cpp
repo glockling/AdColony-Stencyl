@@ -26,23 +26,14 @@ using namespace adcolony;
 
 // Configure
 
-AutoGCRoot* AdColonyAvailableEventHandle = 0;
-
-AutoGCRoot* AdColonyFinishEventHandle = 0;
+AutoGCRoot* adColonyEvent = 0;
 
 
-
-void adcolonyavailable_event(value onEvent)
+void adcolony_event(value onEvent)
 {
-    AdColonyAvailableEventHandle = new AutoGCRoot(onEvent);
+    adColonyEvent = new AutoGCRoot(onEvent);
 }
-DEFINE_PRIM(adcolonyavailable_event, 1);
-
-void adcolonyfinished_event(value onEvent)
-{
-    AdColonyFinishEventHandle = new AutoGCRoot(onEvent);
-}
-DEFINE_PRIM(adcolonyfinished_event, 1);
+DEFINE_PRIM(adcolony_event, 1);
 
 //Functions
 
@@ -78,18 +69,11 @@ extern "C" int AdColony_register_prims()
 
 
 // Events
-extern "C" void onAdColonyAdAttemptFinished( const char* status )
+extern "C" void adColonyEventChange( const char* status )
 {
     value o = alloc_empty_object();
     alloc_field(o, val_id("status"), alloc_string(status));
-    val_call1(AdColonyFinishEventHandle->get(), o);
-}
-
-extern "C" void onAdColonyAdAvailabilityChange(const char* status)
-{
-    value o = alloc_empty_object();
-    alloc_field(o, val_id("status"), alloc_string(status));
-    val_call1(AdColonyAvailableEventHandle->get(), o);
+    val_call1(adColonyEvent->get(), o);
 }
 /*
  =================
