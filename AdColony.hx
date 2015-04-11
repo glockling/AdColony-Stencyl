@@ -37,22 +37,11 @@ class AdColony
                 availableCall == callbackFn;
             
             }
-            else if(status == "not available"){
-            
-                notavailableCall = callbackFn;
-            
-            }
-            
+
             else if(status == "finished"){
                 
                 finishedCall = callbackFn;
                 
-            }
-        
-            else if(status == "not finished"){
-            
-                notfinishedCall = callbackFn;
-            
             }
         #end
     
@@ -70,21 +59,10 @@ class AdColony
                 availableCall == null;
                 
             }
-            else if(status == "not available"){
-                
-                notavailableCall = null;
-                
-            }
-        
+
             else if(status == "finished"){
                 
                 finishedCall = null;
-                
-            }
-        
-            else if(status == "not finished"){
-                
-                notfinishedCall = null;
                 
             }
             
@@ -102,19 +80,9 @@ class AdColony
             availableCall();
         }
         
-        if(status == "not available" && notavailableCall != null)
-        {
-            notavailableCall();
-        }
-        
         if(status == "finished" && finishedCall != null)
         {
             finishedCall();
-        }
-        
-        if(status == "not finished" && notfinishedCall != null)
-        {
-            notfinishedCall();
         }
         #end
     }
@@ -125,9 +93,7 @@ class AdColony
     }
     
     private static var availableCall:Void->Void;
-    private static var notavailableCall:Void->Void;
     private static var finishedCall:Void->Void;
-    private static var notfinishedCall:Void->Void;
     
 	#if ios
 	private static var LoadAd = Lib.load("adcolony","init_adcolony", 2);
