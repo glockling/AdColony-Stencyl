@@ -72,12 +72,6 @@ extern "C" void onAdColonyAdAvailabilityChange(const char* status);
        onAdColonyAdAvailabilityChange( "available" );
         NSLog(@"Ad is available");
     }
-    
-    else{
-    
-        onAdColonyAdAvailabilityChange("not available");
-        NSLog(@"Ad is not available");
-    }
 }
 
 #pragma mark -
@@ -97,12 +91,6 @@ extern "C" void onAdColonyAdAvailabilityChange(const char* status);
     if (shown) {
         onAdColonyAdAttemptFinished( "shown" );
         NSLog(@"Ad was shown");
-    }
-    
-    else{
-    
-        onAdColonyAdAttemptFinished( "not shown" );
-        //NSLog(@"Ad has not been shown");
     }
     
 }
