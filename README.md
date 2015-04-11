@@ -13,7 +13,6 @@ INFO
 
 Currently doesn't work
 
-I managaed to get the extension to play ads but by trying to get call backs from objective c++
-the extension now crashes the app.
+Extension plays ad, events don't work.
 
 Also there is no Android version
