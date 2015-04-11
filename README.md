@@ -5,7 +5,7 @@ Ad Colony extension for Stencyl
 
 **[Max Glockling](http://www.maxglockling.com)
 
-Follow me on Twitter [Twitter](https://twitter.com/ipsilondev)**
+Follow me on [Twitter](https://twitter.com/glockling)**
 
 
 INFO
