@@ -30,7 +30,7 @@
             <fields>
                 <dropdown order="0">
                     <choices>
-                        <c text="Ad is availabe" code="&quot;available;"></c>
+                        <c text="Ad is availabe" code="&quot;available&quot;"></c>
                         <c text="Last ad played finished" code="&quot;shown&quot;"></c>
                     </choices>
                 </dropdown>
