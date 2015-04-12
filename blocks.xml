@@ -14,26 +14,21 @@
             </fields>
         </block>
         
-        <block tag="ad_addEventListener" spec="Add Event Listener %0 for Ad Colony" code="AdColony.addEventListener(~, function(){~});" type="wrapper" color="gray" returns="void">
+        <block tag="ad-available" spec="Ad with Zone ID: %0 is available" code="AdColony.available(~)" type="normal" color="gray" returns="boolean">
             <fields>
-                <dropdown order="0">
-                    <choices>
-                        <c text="Ad is availabe" code="&quot;available&quot;"></c>
-                        <c text="Last ad played finished" code="&quot;shown&quot;"></c>
-                        </choices>
-                </dropdown>
-                <CODE_BLOCK order="1"></CODE_BLOCK>
+                <text order="0"></text>
             </fields>
         </block>
         
-        <block tag="ad_removeEventListener" spec="Remove Event Listener %0 for Ad Colony" code="AdColony.removeEventListener(~);" type="action" color="gray" returns="void">
+        <block tag="ad-finished" spec="Ad with Zone ID: %0 was closed" code="AdColony.status(~)" type="normal" color="gray" returns="boolean">
             <fields>
-                <dropdown order="0">
-                    <choices>
-                        <c text="Ad is availabe" code="&quot;available&quot;"></c>
-                        <c text="Last ad played finished" code="&quot;shown&quot;"></c>
-                    </choices>
-                </dropdown>
+                <text order="0"></text>
+            </fields>
+        </block>
+        
+        <block tag="ad-showing" spec="Ad with Zone ID: %0 started showing" code="AdColony.showing(~)" type="normal" color="gray" returns="boolean">
+            <fields>
+                <text order="0"></text>
             </fields>
         </block>
 

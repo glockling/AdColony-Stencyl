@@ -19,16 +19,28 @@ extern "C" void adColonyEventChange(const char* status);
 
 @interface AdColonyLib:NSObject <AdColonyDelegate, AdColonyAdDelegate>
 {
-
     
+    BOOL videoAvailable;
+    BOOL videoFinished;
+    BOOL videoShown;
+    NSString *adcolonyZoneID;
     
 }
 
+@property (nonatomic, assign) BOOL videoAvailable;
+@property (nonatomic, assign) BOOL videoFinished;
+@property (nonatomic, assign) BOOL videoShown;
+@property (nonatomic, copy) NSString *adcolonyZoneID;
 
 @end
 
 @implementation AdColonyLib
 
+ 
+@synthesize videoAvailable;
+@synthesize videoFinished;
+@synthesize videoShown;
+@synthesize adcolonyZoneID;
 /*
  
 ================
@@ -67,14 +79,9 @@ extern "C" void adColonyEventChange(const char* status);
 
 - ( void )onAdColonyAdAvailabilityChange:(BOOL)available inZone:(NSString*) zoneID
 {
-    if (available) {
-       adColonyEventChange( "available" );
-        NSLog(@"----> Available <----");
-    }
-    else{
-    NSLog(@"----> Not Available <----");
-    
-    }
+
+    adcolonyZoneID = zoneID;
+    videoAvailable = available;
 }
 
 #pragma mark -
@@ -84,22 +91,16 @@ extern "C" void adColonyEventChange(const char* status);
 // Apps should implement app-specific code such as pausing a game and turning off app music
 - ( void ) onAdColonyAdStartedInZone:( NSString * )zoneID
 {
-    //onAdColonyStarted();
+    videoShown = YES;
+    adcolonyZoneID = zoneID;
 }
 
 // Is called when AdColony has finished trying to show an ad, either successfully or unsuccessfully
 // If shown == YES, an ad was displayed and apps should implement app-specific code such as unpausing a game and restarting app music
 - ( void )onAdColonyAdAttemptFinished:(BOOL)shown inZone:( NSString * )zoneID
 {
-    if (shown) {
-        adColonyEventChange( "shown" );
-        NSLog(@"----> Shown <----");
-    }
-    else{
-    
-        NSLog(@"----> Not Shown <----");
-    
-    }
+    videoFinished = shown;
+    adcolonyZoneID = zoneID;
 }
 
 @end
@@ -112,6 +113,7 @@ using namespace adcolony;
 
 namespace adcolony{
     
+    
     static AdColonyLib *AdColonyController;
     
     //Load adcolony ad using App ID and Zone Id
@@ -119,7 +121,6 @@ namespace adcolony{
         
         if(AdColonyController == NULL)
         {
-            NSLog(@"Setting up AdColonyController");
             AdColonyController = [AdColonyLib alloc];
         }
         
@@ -135,15 +136,59 @@ namespace adcolony{
     //Plays ad for zone with zone ID
     void PlayAd(const char *zoneId){
         
-        NSLog(@"PLAY AD!!");
-        
         NSString * zoneID2 = [[NSString alloc] initWithUTF8String:zoneId];
         [AdColony playVideoAdForZone:zoneID2 withDelegate:AdColonyController];
     }
     
     void Log(const char *text){
     
-        NSLog(@text);
+        NSString * text2 = [[NSString alloc] initWithUTF8String:text];
+        
+        NSLog(text2);
     }
     
+    // Checks availability for specific zone ID
+    bool adcolonyAvailable(const char *zoneID)
+    {
+        
+        NSString * zoneID2 = [[NSString alloc] initWithUTF8String:zoneID];
+        NSString * OtherZoneID = AdColonyController.adcolonyZoneID;
+        if ([zoneID2 isEqualToString:OtherZoneID]) {
+            if (AdColonyController.videoAvailable) {
+                AdColonyController.videoAvailable = NO;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    bool adcolonyStatus(const char *zoneID)
+    {
+        NSString * zoneID2 = [[NSString alloc] initWithUTF8String:zoneID];
+        NSString * OtherZoneID = AdColonyController.adcolonyZoneID;
+        if ([zoneID2 isEqualToString:OtherZoneID]) {
+            
+            if (AdColonyController.videoFinished) {
+                AdColonyController.videoFinished = NO;
+                return true;
+            }
+            
+        }
+        return false;
+    }
+    
+    bool adcolonyShowing(const char *zoneID)
+    {
+        NSString * zoneID2 = [[NSString alloc] initWithUTF8String:zoneID];
+        NSString * OtherZoneID = AdColonyController.adcolonyZoneID;
+        if ([zoneID2 isEqualToString:OtherZoneID]) {
+            
+            if (AdColonyController.videoShown) {
+                AdColonyController.videoShown = NO;
+                return true;
+            }
+            
+        }
+        return false;
+    }
 }

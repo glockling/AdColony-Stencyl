@@ -11,94 +11,49 @@ class AdColony
 {
     
     //Called from Blocks.xml this loads Ad Colony with a specific Zone ID
-    public static function load(appid:String, zoneid:String){
+    public static function load(appid:String, zoneid:String):Void{
         
        
-        adColonyEvent(setEventListeners);
+       // adColonyEvent(setEventListeners);
         LoadAd(appid, zoneid);
     
     }
     
     //Called from Blocks.xml this plays Ad Colony Ad with a specific Zone ID
-    public static function play(zoneID:String){
+    public static function play(zoneID:String):Void{
         
         PlayAd(zoneID);
         
     }
     
-    //Adding event listeners
+    //Called from Blocks.xml this checks if ad with zone id is loaded
     
-    public static function addEventListener(status:String, callbackFn:Void->Void):Void{
+    public static function available(zoneid:String):Bool{
     
-        #if ios
-            
-            if(status == "available"){
-            
-                availableCall == callbackFn;
-            	Log("Available");
-            }
-
-            else if(status == "shown"){
-                
-                shownCall = callbackFn;
-                Log("Shown");
-            }
-        #end
+        return Available(zoneid);
     
     }
     
+    //Called from Blocks.xml this updates the status of zone ID "Closed"
     
-    //Removing event listeners
+    public static function status(zoneid:String):Bool{
     
-    public static function removeEventListener(status:String):Void{
-    
-        #if ios
-            
-            if(status == "available"){
-                
-                availableCall == null;
-                
-            }
-
-            else if(status == "shown"){
-                
-                shownCall = null;
-                
-            }
-            
-        #end
+        return Status(zoneid);
     }
     
-    public static function setEventListeners(inEvent:Dynamic){
+    // Called from Blocks.xml this updates the status of Zone ID "Showing"
     
-        #if ios
+    public static function showing(zoneid:String):Bool{
         
-            var status:String = Std.string(Reflect.field(inEvent, "status"));
-        
-        if(status == "available" && availableCall != null)
-        {
-            availableCall();
-        }
-        
-        if(status == "shown" && shownCall != null)
-        {
-            shownCall();
-        }
-        #end
+        return Showing(zoneid);
     }
     
-    public function new()
-    {
-        
-    }
-    
-    private static var availableCall:Void->Void;
-    private static var shownCall:Void->Void;
-    
+     
 	#if ios
 	private static var LoadAd = Lib.load("adcolony","init_adcolony", 2);
-    	private static var PlayAd = Lib.load("adcolony","play_adcolony", 1);
-    	private static var Log = Lib.load("adcolony","log_adcolony", 1);
-    	private static var adColonyEvent = Lib.load("adcolony","adcolony_event",1);
+    private static var PlayAd = Lib.load("adcolony","play_adcolony", 1);
+    private static var Available = Lib.load("adcolony","available_adcolony", 1);
+    private static var Status = Lib.load("adcolony","status_adcolony", 1);
+    private static var Showing = Lib.load("adcolony","showing_adcolony",1);
 	#end
 }
