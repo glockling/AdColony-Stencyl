@@ -40,7 +40,7 @@ class AdColony
 
             else if(status == "shown"){
                 
-                finishedCall = callbackFn;
+                shownCall = callbackFn;
                 
             }
         #end
@@ -62,7 +62,7 @@ class AdColony
 
             else if(status == "shown"){
                 
-                finishedCall = null;
+                shownCall = null;
                 
             }
             
@@ -82,7 +82,7 @@ class AdColony
         
         if(status == "shown" && finishedCall != null)
         {
-            finishedCall();
+            shownCall();
         }
         #end
     }
@@ -93,7 +93,7 @@ class AdColony
     }
     
     private static var availableCall:Void->Void;
-    private static var finishedCall:Void->Void;
+    private static var shownCall:Void->Void;
     
 	#if ios
 	private static var LoadAd = Lib.load("adcolony","init_adcolony", 2);
