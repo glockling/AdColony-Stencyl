@@ -35,13 +35,13 @@ class AdColony
             if(status == "available"){
             
                 availableCall == callbackFn;
-            
+            	Log("Available");
             }
 
             else if(status == "shown"){
                 
                 shownCall = callbackFn;
-                
+                Log("Shown");
             }
         #end
     
@@ -97,7 +97,8 @@ class AdColony
     
 	#if ios
 	private static var LoadAd = Lib.load("adcolony","init_adcolony", 2);
-    private static var PlayAd = Lib.load("adcolony","play_adcolony", 1);
-    private static var adColonyEvent = Lib.load("adcolony","adcolony_event",1);
+    	private static var PlayAd = Lib.load("adcolony","play_adcolony", 1);
+    	private static var Log = Lib.load("adcolony","log_adcolony", 1);
+    	private static var adColonyEvent = Lib.load("adcolony","adcolony_event",1);
 	#end
 }
