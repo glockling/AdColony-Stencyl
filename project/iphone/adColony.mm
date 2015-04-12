@@ -141,4 +141,9 @@ namespace adcolony{
         [AdColony playVideoAdForZone:zoneID2 withDelegate:AdColonyController];
     }
     
+    void Log(const char *text){
+    
+        NSLog(@text);
+    }
+    
 }
