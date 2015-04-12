@@ -69,6 +69,11 @@ extern "C" void adColonyEventChange(const char* status);
 {
     if (available) {
        adColonyEventChange( "available" );
+        NSLog(@"----> Available <----");
+    }
+    else{
+    NSLog(@"----> Not Available <----");
+    
     }
 }
 
@@ -88,8 +93,13 @@ extern "C" void adColonyEventChange(const char* status);
 {
     if (shown) {
         adColonyEventChange( "shown" );
+        NSLog(@"----> Shown <----");
     }
+    else{
     
+        NSLog(@"----> Not Shown <----");
+    
+    }
 }
 
 @end
