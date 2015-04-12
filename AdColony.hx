@@ -38,7 +38,7 @@ class AdColony
             
             }
 
-            else if(status == "finished"){
+            else if(status == "shown"){
                 
                 finishedCall = callbackFn;
                 
@@ -60,7 +60,7 @@ class AdColony
                 
             }
 
-            else if(status == "finished"){
+            else if(status == "shown"){
                 
                 finishedCall = null;
                 
@@ -80,7 +80,7 @@ class AdColony
             availableCall();
         }
         
-        if(status == "finished" && finishedCall != null)
+        if(status == "shown" && finishedCall != null)
         {
             finishedCall();
         }
