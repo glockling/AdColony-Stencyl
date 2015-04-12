@@ -80,7 +80,7 @@ class AdColony
             availableCall();
         }
         
-        if(status == "shown" && finishedCall != null)
+        if(status == "shown" && shownCall != null)
         {
             shownCall();
         }
