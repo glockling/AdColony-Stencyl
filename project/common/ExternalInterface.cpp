@@ -45,6 +45,11 @@ void play_adcolony(value zoneid)
 }
 DEFINE_PRIM(play_adcolony, 1);
 
+void log_adcolony(value text)
+{
+    Log(val_string(text));
+}
+DEFINE_PRIM(log_adcolony, 1);
 #endif
 
 
