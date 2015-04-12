@@ -19,9 +19,7 @@
                 <dropdown order="0">
                     <choices>
                         <c text="Ad is availabe" code="&quot;available&quot;"></c>
-                        <c text="Ad is not availabe" code="&quot;notavailable&quot;"></c>
-                        <c text="Last ad played finished" code="&quot;finished&quot;"></c>
-                        <c text="Last ad played did not finish" code="&quot;notfinished&quot;"></c>
+                        <c text="Last ad played finished" code="&quot;shown&quot;"></c>
                         </choices>
                 </dropdown>
                 <CODE_BLOCK order="1"></CODE_BLOCK>
@@ -33,9 +31,7 @@
                 <dropdown order="0">
                     <choices>
                         <c text="Ad is availabe" code="&quot;available;"></c>
-                        <c text="Ad is not availabe" code="&quot;notavailable&quot;"></c>
-                        <c text="Last ad played finished" code="&quot;finished&quot;"></c>
-                        <c text="Last ad played did not finish" code="&quot;notfinished&quot;"></c>
+                        <c text="Last ad played finished" code="&quot;shown&quot;"></c>
                     </choices>
                 </dropdown>
             </fields>
